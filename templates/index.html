@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/js/regular.min.js"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Share Tech Mono", monospace;
+        padding: 20px;
+        background-color: #151515;
+        color: white;
+      }
+
+      .header {
+        font-size: 20px;
+        text-align: start;
+        text-transform: uppercase;
+      }
+
+      .leftcolumn {
+        float: left;
+        width: 100%;
+      }
+
+      .card {
+        background-color: #313131;
+        padding: 20px;
+        margin-top: 20px;
+        border-radius: 6px;
+      }
+      a {
+        text-decoration: none;
+        color: aquamarine;
+      }
+
+      h2 {
+        color: white;
+      }
+
+      .row:after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+
+      @media screen and (max-width: 800px) {
+        .leftcolumn,
+        .rightcolumn {
+          width: 100%;
+          padding: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <h2>Welcome To My Blog</h2>
+    </div>
+
+    <div class="row">
+      <div class="leftcolumn">
+        {% for post in posts %}
+        <div class="card">
+          <a href="/post/{{post.title}}">
+            <h2>{{post.title}}</h2>
+            <h5>{{post.tag}}</h5>
+            <h5>{{post.created_at}}</h5>
+            <p>{{post.body|truncatewords:20}}</p>
+          </a>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </body>
+</html>
